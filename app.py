@@ -47,7 +47,7 @@ def generate_response(input_text):
 
 #appli
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/chat', methods=['POST'])
