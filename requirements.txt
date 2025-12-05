@@ -3,4 +3,5 @@ tensorflow
 numpy
 flask-cors
 gunicorn
+pickle-mixin
 
