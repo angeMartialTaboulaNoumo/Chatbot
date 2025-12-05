@@ -5,12 +5,9 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 import pickle
 from flask_cors import CORS
-import os
 
-# Charger les modèles
 encoder_model = load_model("encoders_decoders/encoder_model.h5")
 decoder_model = load_model("encoders_decoders/decoder_model.h5")
-
 # Charger le tokenizer des questions
 with open("tokens/tokenizer_questions.pkl", "rb") as f:
     tokenizer_questions = pickle.load(f)
@@ -19,9 +16,10 @@ with open("tokens/tokenizer_questions.pkl", "rb") as f:
 with open("tokens/tokenizer_answers.pkl", "rb") as f:
     tokenizer_answers = pickle.load(f)
 
-max_len_questions = 11
-max_len_answers = 12
+max_len_questions = 11  # à ajuster selon ton dataset
+max_len_answers = 12     # à ajuster selon ton dataset
 
+#Fonction pour générer une réponse
 def generate_response(input_text):
     seq = tokenizer_questions.texts_to_sequences([input_text])
     seq = pad_sequences(seq, maxlen=max_len_questions, padding='post')
@@ -47,8 +45,9 @@ def generate_response(input_text):
 
     return decoded_sentence.strip()
 
-# Application Flask
-app = Flask(__name__)
+#appli
+
+app = Flask(_name_)
 CORS(app)
 
 @app.route('/api/chat', methods=['POST'])
@@ -61,6 +60,7 @@ def chat():
     answer = generate_response(question)
 
     return jsonify({'question': question, 'answer': answer})
+
 
 if __name__ == '__main__':
     # Render fournit le port via une variable d'environnement
