@@ -64,17 +64,12 @@ def chat():
 
     print("ok")
     question = data['question']
-    answer = generate_response(question)
-
-    return jsonify({'question': question, 'answer': answer})
-
-
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
-
+    #answer = generate_response(question)
+    return jsonify({'question': "question", 'answer': "reponse"})
+    #return jsonify({'question': question, 'answer': answer})
 
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
+
