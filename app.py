@@ -61,6 +61,8 @@ def chat():
     if not data or 'question' not in data:
         return jsonify({'error': 'Missing "question" field'}), 400
 
+
+    print("ok")
     question = data['question']
     answer = generate_response(question)
 
