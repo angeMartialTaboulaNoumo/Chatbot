@@ -64,7 +64,7 @@ def chat():
 
     print("ok")
     question = data['question']
-    #answer = generate_response(question)
+    answer = generate_response(question)
     #return jsonify({'question': "question", 'answer': "reponse"})
     return jsonify({'question': question, 'answer': answer})
 
